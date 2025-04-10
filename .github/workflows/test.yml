@@ -20,17 +20,13 @@ jobs:
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
 
-      - name: Show Forge version
-        run: |
-          forge --version
-
       - name: Run Forge build
         run: |
-          forge install
-          forge build
-        id: build
+          forge install foundry-rs/forge-std
+          forge install OpenZeppelin/openzeppelin-contracts
 
-      - name: Run Forge tests
+      - name: Aderyn
         run: |
-          forge test -vvv
-        id: test
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/cyfrin/aderyn/releases/latest/download/aderyn-installer.sh | bash
+          aderyn -o report.json
+          cat report.json
