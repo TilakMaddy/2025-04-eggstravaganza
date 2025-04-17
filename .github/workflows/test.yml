@@ -25,5 +25,7 @@ jobs:
           forge install foundry-rs/forge-std --no-commit
           forge install OpenZeppelin/openzeppelin-contracts --no-commit
 
-      - name: Aderyn
+      - name: Aderyn Check
         uses: Cyfrin/aderyn-ci@v0
+        with:
+          fail-on: high
